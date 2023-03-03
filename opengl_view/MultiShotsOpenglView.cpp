@@ -128,7 +128,6 @@ void MultiShotsOpenglView::paintGL()
 	m_GlView.setDistMinAndMax(m_World.collection()->boundingBox());
 
 	// Enable and execute lighting
-	m_pOpenglView->getLight()->enable();
 	try
 	{
 		m_pOpenglView->getLight()->glExecute();
@@ -139,7 +138,6 @@ void MultiShotsOpenglView::paintGL()
 			const int size= m_pOpenglView->getLights()->size();
 			for (int i= 0; i < size; ++i)
 			{
-				m_pOpenglView->getLights()->operator[](i)->enable();
 				m_pOpenglView->getLights()->operator[](i)->glExecute();
 			}
 		}

@@ -181,7 +181,7 @@ void ScreenshotDialog::accept()
 	{
 		m_PreviousFilePath= QFileInfo(fileName).absolutePath();
 		fileName= m_PreviousFilePath + QDir::separator() + QFileInfo(fileName).completeBaseName() + extension;
-		imageToSave.save(fileName, imageFormat.toAscii().data(), 100);
+		imageToSave.save(fileName, imageFormat.toUtf8().data(), 100);
 		QDialog::accept();
 	}
 }

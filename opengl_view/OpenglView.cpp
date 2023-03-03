@@ -513,8 +513,6 @@ void OpenglView::paintGL()
 	try
 	{
 		// Enable and execute lighting
-		m_Light.enable();
-
 		m_Light.glExecute();
 		m_GlView.glExecuteCam();
 		if (!m_UserLights.isEmpty())
@@ -522,7 +520,6 @@ void OpenglView::paintGL()
 			const int size= m_UserLights.size();
 			for (int i= 0; i < size; ++i)
 			{
-				m_UserLights[i]->enable();
 				m_UserLights[i]->glExecute();
 			}
 		}

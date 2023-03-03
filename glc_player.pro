@@ -23,7 +23,7 @@ win32 {
 
 unix { 
     LIBS += -lGLC_lib
-    INCLUDEPATH += "/usr/local/include/GLC_lib"
+    INCLUDEPATH += "/usr/include/GLC_lib"
 }
 
 TRANSLATIONS = ressources/glc_player_fr.ts
@@ -139,4 +139,3 @@ mac {
     QMAKE_INFO_PLIST = ressources/Info_mac.plist
     TARGET = glc_player
 }
-    

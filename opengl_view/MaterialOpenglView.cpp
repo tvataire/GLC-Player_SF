@@ -100,7 +100,6 @@ void MaterialOpenglView::paintGL()
 	glLoadIdentity();
 
 	// Enable and execute lighting
-	m_Light.enable();
 	try
 	{
 		m_Light.glExecute();
