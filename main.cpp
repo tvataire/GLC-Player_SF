@@ -92,13 +92,22 @@ int main(int argc, char *argv[])
     // Test if the system support frame buffer Object
     //const bool frameBufferIsSupported= QGLFramebufferObject::hasOpenGLFramebufferObjects();
 
-	// create a OpenGL rendering context and register it as current context.
-	QGLFormat format = QGLFormat();
-	GLC_Context context(format);
-	context.makeCurrent();
-
     // Create the main Window
     glc_player mainWindow;
+
+    // create a OpenGL rendering context and register it as current context.
+
+    QOpenGLContext oglcontext;
+    oglcontext.setFormat(QSurfaceFormat());
+    if (!oglcontext.create())
+    {
+    	return 2;
+    }
+    oglcontext.makeCurrent(mainWindow.windowHandle());
+
+    GLC_Context context(&oglcontext, mainWindow.windowHandle());
+    context.makeCurrent();
+
     mainWindow.show();
 
     //app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
@@ -112,4 +121,5 @@ int main(int argc, char *argv[])
   	app.installEventFilter(pFileOpenFilter);
 
     return app.exec();
+
 }

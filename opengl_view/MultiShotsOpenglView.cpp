@@ -28,7 +28,7 @@
 
 MultiShotsOpenglView::MultiShotsOpenglView(QWidget * pParent, QGLWidget* pShareWidget)
 : QGLWidget(QGLFormat(QGL::SampleBuffers), pParent, pShareWidget)
-, m_GlView(this)
+, m_GlView()
 , m_World()
 , m_MotionTimer()
 , m_RotationVector()

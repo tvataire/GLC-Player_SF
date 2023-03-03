@@ -23,13 +23,13 @@
 *****************************************************************************/
 
 
-#include <GLC_StructOccurence>
+#include <GLC_StructOccurrence>
 #include "EditPositionDialog.h"
 
-EditPositionDialog::EditPositionDialog(GLC_StructOccurence* pSTructOccurence, QWidget *pParent)
+EditPositionDialog::EditPositionDialog(GLC_StructOccurrence* pSTructOccurrence, QWidget *pParent)
 : QDialog(pParent)
-, m_pOccurence(pSTructOccurence)
-, m_Matrix(pSTructOccurence->structInstance()->relativeMatrix())
+, m_pOccurrence(pSTructOccurrence)
+, m_Matrix(pSTructOccurrence->structInstance()->relativeMatrix())
 {
 	setupUi(this);
 
@@ -60,12 +60,12 @@ EditPositionDialog::~EditPositionDialog()
 
 void EditPositionDialog::reject()
 {
-	m_pOccurence->structInstance()->setMatrix(m_Matrix);
-	const int occurenceCount= m_pOccurence->structInstance()->numberOfOccurence();
-	QList<GLC_StructOccurence*> occurencesList= m_pOccurence->structInstance()->listOfStructOccurences();
-	for (int i= 0; i < occurenceCount; ++i)
+	m_pOccurrence->structInstance()->setMatrix(m_Matrix);
+	const int occurrenceCount= m_pOccurrence->structInstance()->numberOfOccurrence();
+	QList<GLC_StructOccurrence*> occurrencesList= m_pOccurrence->structInstance()->listOfStructOccurrences();
+	for (int i= 0; i < occurrenceCount; ++i)
 	{
-		occurencesList[i]->updateChildrenAbsoluteMatrix();
+		occurrencesList[i]->updateChildrenAbsoluteMatrix();
 	}
 	QDialog::reject();
 }
@@ -77,12 +77,12 @@ void EditPositionDialog::updateMatrix()
 	double alphaZ= glc::toRadian(rz->value());
 
 	GLC_Matrix4x4 rotationMatrix(GLC_Matrix4x4().fromEuler(alphaX, alphaY, alphaZ));
-	m_pOccurence->structInstance()->setMatrix(GLC_Matrix4x4(tx->value(), ty->value(), tz->value()) * rotationMatrix);
-	const int occurenceCount= m_pOccurence->structInstance()->numberOfOccurence();
-	QList<GLC_StructOccurence*> occurencesList= m_pOccurence->structInstance()->listOfStructOccurences();
-	for (int i= 0; i < occurenceCount; ++i)
+	m_pOccurrence->structInstance()->setMatrix(GLC_Matrix4x4(tx->value(), ty->value(), tz->value()) * rotationMatrix);
+	const int occurrenceCount= m_pOccurrence->structInstance()->numberOfOccurrence();
+	QList<GLC_StructOccurrence*> occurrencesList= m_pOccurrence->structInstance()->listOfStructOccurrences();
+	for (int i= 0; i < occurrenceCount; ++i)
 	{
-		occurencesList[i]->updateChildrenAbsoluteMatrix();
+		occurrencesList[i]->updateChildrenAbsoluteMatrix();
 	}
 
 	emit positionUpdated();

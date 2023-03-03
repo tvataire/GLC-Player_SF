@@ -479,7 +479,7 @@ void SettingsDialog::setOpenGLInformation()
 		myPalette.setColor(QPalette::Normal, QPalette::WindowText, Qt::red);
 		vboUsage->setPalette(myPalette);
 		useVbo->setCheckState(Qt::Unchecked);
-		if (!GLC_State::vboSupported())
+		if (!GLC_State::vboUsed())
 		{
 			useVbo->setEnabled(false);
 		}
@@ -498,7 +498,7 @@ void SettingsDialog::setOpenGLInformation()
 		// Disable use selection shader check box
 		useSelectionShader->setEnabled(false);
 		useSelectionShader->setCheckState(Qt::Unchecked);
-		if (!GLC_State::glslSupported())
+		if (!GLC_State::glslUsed())
 		{
 			useShader->setEnabled(false);
 		}

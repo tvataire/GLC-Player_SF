@@ -29,7 +29,7 @@
 
 MaterialOpenglView::MaterialOpenglView(QWidget * pParent, const QGLWidget* pShareWidget, GLC_Material* pMaterial)
 : QGLWidget(pParent, pShareWidget)
-, m_GlView(this)
+, m_GlView()
 , m_World()
 , m_Light()
 , m_pGeom(NULL)
@@ -79,7 +79,7 @@ void MaterialOpenglView::initializeGL()
 	m_pGeom= cylinder.geomAt(0);
 	m_pGeom->replaceMasterMaterial(m_pMaterial);
 	//m_pGeom->setTransparency(m_pMaterial->isTransparent());
-	m_World.rootOccurence()->addChild(new GLC_StructOccurence(new GLC_3DRep(cylinder)));
+	m_World.rootOccurrence()->addChild(new GLC_StructOccurrence(new GLC_3DRep(cylinder)));
 
 	// Define position of the camera eye
 	const GLC_Vector3d VectEye(0.0, -3.0, 1.5);

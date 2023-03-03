@@ -25,6 +25,7 @@
 #include "EditLightDialog.h"
 
 #include <GLC_Light>
+#include <GLC_ContextManager>
 
 #include <QtGui>
 
@@ -105,7 +106,7 @@ void EditLightDialog::changeSpecularColor()
 
 void EditLightDialog::addLight()
 {
-	QGLContext* pCurrentContext= const_cast<QGLContext*>(QGLContext::currentContext());
+	GLC_Context* pCurrentContext = GLC_ContextManager::instance()->currentContext();
 	if ((GLC_Light::builtAbleLightCount(pCurrentContext) - 4) > 0)
 	{
 		int lightIndex= GLC_Light::maxLightCount() - GLC_Light::builtAbleLightCount(pCurrentContext);
