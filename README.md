@@ -1,5 +1,5 @@
 # GLC-lib
-On Linux-based systems, GLC-lib must be liked to zlib and quazip system libraries instead of the built-in ones. (see https://github.com/laumaya/GLC_lib/pull/43)
+On Linux-based systems, GLC-lib must be linked against zlib and quazip system libraries instead of the built-in ones. (see https://github.com/laumaya/GLC_lib/pull/43)
 
 ## Build
 ```
