@@ -28,6 +28,8 @@
 #include <QtGui>
 #include <QApplication>
 #include <QSettings>
+#include <GLC_Context>
+#include <QGLFormat>
 
 int main(int argc, char *argv[])
 {
@@ -89,6 +91,11 @@ int main(int argc, char *argv[])
 
     // Test if the system support frame buffer Object
     //const bool frameBufferIsSupported= QGLFramebufferObject::hasOpenGLFramebufferObjects();
+
+	// create a OpenGL rendering context and register it as current context.
+	QGLFormat format = QGLFormat();
+	GLC_Context context(format);
+	context.makeCurrent();
 
     // Create the main Window
     glc_player mainWindow;

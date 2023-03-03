@@ -105,7 +105,8 @@ OpenglView::OpenglView(QWidget *pParent)
 
 OpenglView::~OpenglView()
 {
-	GLC_SelectionMaterial::deleteShader(context());
+	GLC_SelectionMaterial::deleteShader(GLC_Context::currentContext());
+
 	if (!m_ShaderList.isEmpty())
 	{
 		const int size= m_ShaderList.size();
@@ -121,6 +122,7 @@ OpenglView::~OpenglView()
 	{
 		delete m_UserLights.at(i);
 	}
+
 }
 
 //////////////////////////////////////////////////////////////////////
