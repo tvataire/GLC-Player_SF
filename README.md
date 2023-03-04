@@ -7,7 +7,7 @@ qmake glc_lib.pro
 make
 ```
 
-##Install :
+## Install :
 ```
 sudo make install
 ```
